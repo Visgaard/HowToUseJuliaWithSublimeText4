@@ -1,4 +1,4 @@
-# How to use Julia with Sublime Text 3
+# How to use Julia with Sublime Text 4 (build 4169)
 
 ## Rationale
 
