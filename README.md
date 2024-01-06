@@ -163,3 +163,7 @@ This also works for evaluating a line of code: place the cursor on a line and ty
 In a currently opened Julia source file, press `ctrl+b` (which is a key binding for the menu action **Tools/Build**). The current file will be evaluated in a Julia-running **Terminus** window with an `include()`.
 
 If you need to restart a session in the Julia REPL, you have to close the terminal and open a new one.
+
+## Do it only once
+
+It may seem like a lot of work to do, but if you install the portable version of Sublime Text directly from their website, you only have to do this once. This is what I have done and added a .zip file to this repo which contains build 4169 of Sublime Text with the settings described here. You should be able to download it and go straight to work (of course, you may need to edit a few files like where the Julia executable is located, but that should be it.)
