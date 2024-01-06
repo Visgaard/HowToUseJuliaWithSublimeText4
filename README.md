@@ -101,7 +101,7 @@ I put in there my personal preferences for key bindings:
 
 ### Customization of the SendCode package
 
-I make sure Julia code is sent to a **Terminus** terminal. Select **Preferences/Package Settings/SendCode/Settings**. Paste the below code into the file `USER` file
+I make sure Julia code is sent to a **Terminus** terminal. Select **Preferences/Package Settings/SendCode/Settings**. Paste the below code into the `USER` file
 
 ```
 
