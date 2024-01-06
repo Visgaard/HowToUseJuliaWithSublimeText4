@@ -2,7 +2,7 @@
 
 ## Rationale
 
-This document is copied directly from the original branch and I have made a few corrections. I have done absolutely no additional work, and everthing should be attributed to PetrKryslUCSD. I've used this to get a nice Sublime Text setup with a Julia REPL inside the editor, to which we can send code and build source code.
+This document is copied directly from the original branch and I have made a few corrections. I have done absolutely no additional work, and everthing should be attributed to [@PetrKryslUCSD](https://www.github.com/PetrKryslUCSD). I've used this to get a nice Sublime Text setup with a Julia REPL inside the editor, to which we can send code and build source code.
 
 ## Installation
 
