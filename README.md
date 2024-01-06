@@ -34,7 +34,8 @@ The key bindings file and the other customization files for the user live in the
 
 ### Basic user settings
 
-Select **Preferences/Settings**. In the "User" settings file (probably opens on the right in your editor) put the following lines:
+Select **Preferences/Settings**. Sublime will open two windows on the left and right of your editor, both called Preferences.sublime-settings, where the left one is Sublime default settings and the right one is your user defined settings, which will be saved automatically in the `USER` folder. This is the file you need to make changes in, as the default settings gets overwritten with Sublime version updates. All possible settings are listed in the default settings, and you can always refer to these. I like the following settings: 
+
 ```
 {
     "always_show_minimap_viewport": true,
@@ -60,8 +61,9 @@ Select **Preferences/Settings**. In the "User" settings file (probably opens on 
 ### Key bindings
 
 Select **Preferences/Key bindings**. This will open a new window with
-the file`Default (Windows).sublime-keymap`, shown in the window on the right.
+the file`Default (Windows).sublime-keymap`, shown in the window on the right. The same thing goes for this file as the user settings file.
 I put in there my personal preferences for key bindings:
+
 ```
 [
     // pasted code immediately re-indented
@@ -99,7 +101,7 @@ I put in there my personal preferences for key bindings:
 
 ### Customization of the SendCode package
 
-I make sure Julia code is sent to a **Terminus** terminal. Select **Preferences/Package Settings/SendCode/Settings**. No need to paste code into the `User SendCode.sublime-settings` as we can edit the `Default`. Paste the below code into the bottom of this file, which is already populated with other stuff.
+I make sure Julia code is sent to a **Terminus** terminal. Select **Preferences/Package Settings/SendCode/Settings**. Paste the below code into the file `USER` file
 
 ```
 
@@ -111,7 +113,7 @@ I make sure Julia code is sent to a **Terminus** terminal. Select **Preferences/
     }
 
 ```
-There also needs to be a file `Packages\SendCode\build_systems\Julia - Source File.sublime-build` with the command to "build" a Julia file by running it in the REPL.
+There also needs to be a file `Packages\SendCode\build_systems\Julia - Source File.sublime-build` with the command to "build" a Julia file by running it in the REPL. This file should have been created when you installed **SendCode**. 
 ```
 {
     "target": "send_code_exec",
@@ -120,11 +122,13 @@ There also needs to be a file `Packages\SendCode\build_systems\Julia - Source Fi
 }
 ```
 
+I replaced the existing `"code": "include(\"$file\");",` with `"code": "include(\"$file_name\")",` to get just the file name instead of the full path to the file. Check the [SendCode repo](https://github.com/randy3k/SendCode) for other options.
+
 ### Command to start Julia REPL
 
 The following functionality is the brainchild of Paul Soderlind (thanks!).
 
-In order to be able to open a Julia REPL from a Julia source file currently opened in the editor, I define the following command binding in the file `USER\Default.sublime-commands`:
+In order to be able to open a Julia REPL from a Julia source file currently opened in the editor, I define the following command binding in the file `USER\Default.sublime-commands`. You made need to create this file yourself. Remember the correct extension on the file!
 ```
 [
     {
@@ -134,31 +138,20 @@ In order to be able to open a Julia REPL from a Julia source file currently open
             "shell_cmd": "%LOCALAPPDATA%\\Programs\\julia-1.9.3\\bin\\julia.exe",
             "cwd": "${file_path:${folder}}",
             "title": "Julia REPL",
-            "pre_window_hooks": [
-                ["focus_group", {"group": 1}]
-            ],
             "env": {"JULIA_NUM_THREADS":"4"},
         }
     }
 ]
 ```
-Note that I have manually put in the location of the julia executeable. You can edit the caption as you like and call it what you want. You can duplicate the code above to create another terminus that uses a different version of Julia. So in the **Tools/Command Palette** choose the command **Terminus: Open Julia 1.9.3** 
+Note that I have manually put in the location of the julia executeable. If you are not sure where it is located, type in `Sys.BINDIR` in a Julia REPL. Furthermore, you can edit the caption as you like and call it what you want. You can duplicate the code above to create another terminus that uses a different version of Julia. So in the **Tools/Command Palette** choose the command **Terminus: Open Julia 1.9.3** 
 
 Also, it is possible to set the environment variable directing the use of threading, `JULIA_NUM_THREADS`. Extending this to other environment variables is likely to be successful as well.
 
-Finally, the editor gives focus to the top-most file in the group 1. This is useful when two columns or two rows are used for the layout. Opening Julia with the cursor in a source file then places the REPL in the other view.
-
 ## Usage
-
-### Open terminal
-
-Bring up the **Command Palette**, start typing in `Terminus`. Select **Terminus: List Shells**, and from the list that appears choose the shell you wish to start. Note that then you can select whether to start the shell in a panel at the bottom or in a separate view.
-
-Julia may be started in the resulting terminal in the usual way. 
 
 ### Open a source file and then run Julia from the source file
 
-Open a Julia source file, and in the **Command Palette**, start typing in `Terminus`. Select **Terminus: Open Julia**. This will open the default terminal on the user's platform, and run Julia in the directory that contains the open file.
+Open a Julia source file, and in the **Command Palette**, start typing in `Terminus`. Select **Terminus: Open Julia 1.9.3**. This will open the default terminal on the user's platform, and run Julia in the directory that contains the open file.
 
 ### Evaluating code
 
@@ -167,6 +160,6 @@ This also works for evaluating a line of code: place the cursor on a line and ty
 
 ### Running Julia files
 
-In a currently opened Julia source file,
-press `ctrl+b` (which is a key binding for the menu action **Tools/Build**).
-The current file will be evaluated in a Julia-running **Terminus** window with an `include()`.
+In a currently opened Julia source file, press `ctrl+b` (which is a key binding for the menu action **Tools/Build**). The current file will be evaluated in a Julia-running **Terminus** window with an `include()`.
+
+If you need to restart a session in the Julia REPL, you have to close the terminal and open a new one.
