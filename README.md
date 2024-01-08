@@ -39,8 +39,12 @@ Select **Preferences/Settings**. Sublime will open two windows on the left and r
 ```
 {
     "always_show_minimap_viewport": true,
-    "auto_complete": false,
-    "auto_complete_commit_on_tab": false,
+    
+    // auto complete true to always see snippet descriptions
+    // auto complete commit on tab to insert snippet when hitting tab, even if tabTrigger not typed out entirely
+    "auto_complete": true,
+    "auto_complete_commit_on_tab": true,
+
     "draw_minimap_border": true,
     "draw_white_space": "all",
     "font_size": 12,
