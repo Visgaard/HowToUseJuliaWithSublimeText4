@@ -108,14 +108,14 @@ I put in there my personal preferences for key bindings:
 I make sure Julia code is sent to a **Terminus** terminal. Select **Preferences/Package Settings/SendCode/Settings**. Paste the below code into the `USER` file
 
 ```
-
+{
     "prog": "terminus",
 
     "julia" : {
         "prog": "terminus",
         "bracketed_paste_mode": false
     }
-
+}
 ```
 There also needs to be a file `Packages\SendCode\build_systems\Julia - Source File.sublime-build` with the command to "build" a Julia file by running it in the REPL. This file should have been created when you installed **SendCode**. 
 ```
