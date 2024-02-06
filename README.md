@@ -121,12 +121,12 @@ There also needs to be a file `Packages\SendCode\build_systems\Julia - Source Fi
 ```
 {
     "target": "send_code_exec",
-    "code": "include(\"$file_name\")",
+    "code": "include(\"$file\")",
     "selector": "source.julia"
 }
 ```
 
-I replaced the existing `"code": "include(\"$file\");",` with `"code": "include(\"$file_name\")",` to get just the file name instead of the full path to the file. Check the [SendCode repo](https://github.com/randy3k/SendCode) for other options.
+Check the [SendCode repo](https://github.com/randy3k/SendCode) for other options.
 
 ### Command to start Julia REPL
 
